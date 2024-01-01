@@ -65,7 +65,12 @@ const userLogins = asyncHandler(async (req, res) => {
 });
 
 const getMe = asyncHandler(async (req, res) => {
-    res.status(200).json(req.user);
+    const user = {
+        id: req.user._id,
+        name: req.user.name,
+        email: req.user.email,
+    };
+    res.status(200).json(user);
 });
 
 // Generate Token
